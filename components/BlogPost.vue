@@ -103,12 +103,12 @@ address {
   }
 } 
 
-button {
-    appearance: none;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
-  }
+/* button {
+  appearance: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+} */
 
 article.blog-post {
     --bp-padding: 1rem;

@@ -61,6 +61,10 @@
     --dark-blue: #F4F0E6; */
 }
 
+/* #__nuxt {
+    position: relative;
+} */
+
 @media screen and (max-width: 767px) {
     :root {
         --radius-lg: 10.5rem;

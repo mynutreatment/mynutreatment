@@ -53,5 +53,6 @@ export default defineNuxtConfig({
     MAILUSER: process.env.MAILUSER,
     MAILPASSWORD: process.env.MAILPASSWORD,
     CONTACTMAIL: process.env.CONTACTMAIL,
-  }
+  },
+  compatibilityDate: '2025-06-03'
 })

@@ -58,6 +58,7 @@ const props = defineProps({
   &:deep(a), &:deep(button) {
     text-decoration: none;
     color: inherit;
+    background-color: inherit;
     display: inline-block;
     padding-inline: 1rem;
     padding-block: 0.5rem;
@@ -65,6 +66,8 @@ const props = defineProps({
     height: fit-content;
     border: var(--border-regular) solid var(--dark-blue);
     border-radius: inherit;
+    appearance: none;
+    cursor: pointer;
     position: relative;
     z-index: 2;
 

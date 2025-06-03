@@ -48,6 +48,7 @@
       <!-- <img loading="lazy" src="../assets/icons/wheat-stems.svg"  alt="wheat-stacks" class="wheat"> -->
     </div>
     <!-- <NuxtLink to="/credits" class="credits">credits</NuxtLink> -->
+    <NuxtLink to="/privacy-policy" class="credits">Πολιτική Απορρήτου</NuxtLink>
   </footer>
 </template>
 

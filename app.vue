@@ -1,10 +1,9 @@
 <template>
-  <CookieBannerToggle />
   <SiteHeader />
   <main>
     <NuxtPage />
   </main>
-  <!-- <CookieBanner /> -->
+  <CookieBanner />
   <FooterCTA v-if="!isContactPage" />
   <SiteFooter />
 </template>

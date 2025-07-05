@@ -6,7 +6,7 @@
         aria-labelledby="cookie_heading"
         class="default-card default-card-content"
       >
-        <h3 id="cookie-heading">Αποδοχή Cookies</h3>
+        <h3 id="cookie_heading">Αποδοχή Cookies</h3>
         <p>
           Χρησιμοποιούμε cookies και παρόμοιες τεχνολογίες για να δώσουμε τη
           δυνατότητα σε υπηρεσίες και λειτουργίες στον ιστότοπό μας και να
@@ -14,10 +14,15 @@
           στο Αποδοχή, αποδέχεστε τη χρήση τέτοιων τεχνολογιών για το μάρκετινγκ
           και αναλυτικά στοιχεία.
         </p>
-        <div>
-          <MainButton size="small">
-            <button @click="acceptCookies">Αποδοχή</button>
-          </MainButton>
+        <div class="info-container">
+          <div class="btn-container">
+            <MainButton size="small">
+              <button @click="acceptCookies">Αποδοχή</button>
+            </MainButton>
+            <MainButton size="small" class="cancel">
+              <button @click="acceptCookies" >Απόρριψη</button>
+            </MainButton>
+          </div>
           <NuxtLink to="/privacy-policy">Μάθετε περισσότερα</NuxtLink>
         </div>
       </section>
@@ -26,26 +31,18 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ open: boolean }>();
-const emit = defineEmits(["update:open"]);
 
-watch(
-  () => props.open,
-  (val) => {
-    localOpen.value = val;
-  }
-);
+let localOpen = ref(false);
 
-const localOpen = ref(props.open);
+onMounted(() => {
+  localOpen.value = localStorage.cookieBannerAccepted ? false : true;
+})
 
-watch(localOpen, (val) => {
-  if (!val) emit("update:open", false);
-});
 
-function acceptCookies() {
-  // localStorage.setItem('cookieBannerAccepted', 'true')
-  // localOpen.value = false
-}
+const acceptCookies = (() => {
+  localStorage.setItem('cookieBannerAccepted', 'true')
+  localOpen.value = false
+}) 
 </script>
 
 <style scoped>
@@ -78,10 +75,11 @@ section {
     );
   }
 
-  div {
+  .info-container {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
-    justify-content: space-around;
     align-items: center;
 
     a {
@@ -89,6 +87,17 @@ section {
       color: inherit;
       /* background-image: linear-gradient(to bottom, transparent 60%, var(--primary-green) 40%); */
       /* text-decoration: none; */
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+
+    .cancel::after {
+      content: unset;
     }
   }
 }

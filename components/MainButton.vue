@@ -1,20 +1,19 @@
 <template>
-  <div class="button" :class="size ? size : ''">
+  <div class="button" :class="size">
     <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-interface Size {
-  type: "small" | "regular" | "large"
-}
+// interface Size {
+//   type: "small" | "regular" | "large";
+// }
 
-const props = defineProps({
-  size: {
-    type: String as PropType<Size>,
-    required: false
-  }
-})
+type Size = "small" | "regular" | "large";
+
+const props = defineProps<{
+  size?: Size;
+}>();
 </script>
 
 <style scoped>
@@ -25,7 +24,7 @@ const props = defineProps({
   /* width: fit-content;
   height: fit-content;
   border: var(--border-regular) solid var(--dark-blue); */
-  border-radius: var(--radius-lg); 
+  border-radius: var(--radius-lg);
   position: relative;
   cursor: pointer;
 
@@ -42,7 +41,8 @@ const props = defineProps({
     transition: all 0.3s;
   }
 
-  &:hover::after, &:focus-within::after {
+  &:hover::after,
+  &:focus-within::after {
     bottom: 0rem;
     right: 0rem;
   }
@@ -55,7 +55,8 @@ const props = defineProps({
     font-size: larger;
   }
 
-  &:deep(a), &:deep(button) {
+  &:deep(a),
+  &:deep(button) {
     text-decoration: none;
     color: inherit;
     background-color: inherit;

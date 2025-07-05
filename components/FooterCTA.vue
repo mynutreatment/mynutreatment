@@ -1,6 +1,15 @@
 <template>
   <section>
-    <NuxtPicture :src="footer.image" :alt="footer.alt" width="550" height="450" sizes="sm:800" placeholder fit="cover" loading="lazy" />
+    <NuxtPicture
+      :src="footer.image"
+      :alt="footer.alt"
+      width="550"
+      height="450"
+      sizes="sm:800"
+      placeholder
+      fit="cover"
+      loading="lazy"
+    />
     <div class="text">
       <h2>
         {{ footer.description }}
@@ -13,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-const footer = await queryContent('main/footercta').findOne();
+const footer = await queryContent("main/footercta").findOne();
 </script>
 
 <style scoped>
@@ -32,7 +41,7 @@ picture {
   transform: translateX(2rem);
 
   &:deep(img) {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -47,13 +56,13 @@ h2 {
   font-size: var(--header-xl);
   font-weight: 600;
   color: var(--white);
-  letter-spacing: .2rem;
-  -webkit-text-stroke: .12rem var(--dark-blue);
+  letter-spacing: 0.2rem;
+  -webkit-text-stroke: 0.12rem var(--dark-blue);
 }
 
 .btn {
   justify-self: end;
-  margin-right: 3rem
+  margin-right: 3rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -70,8 +79,8 @@ h2 {
     font-size: calc(var(--header-xl) - 0.7rem);
     font-weight: 600;
     color: var(--white);
-    letter-spacing: .1rem;
-    -webkit-text-stroke: .08rem var(--dark-blue);
+    letter-spacing: 0.1rem;
+    -webkit-text-stroke: 0.08rem var(--dark-blue);
     margin-left: 1rem;
   }
 
@@ -85,9 +94,10 @@ h2 {
     /* order: 2; */
 
     &:deep(img) {
-      object-fit: contain;
+      /* object-fit: contain; */
+      /* fixed alignment for tiny screens */
+      object-position: bottom;
     }
   }
 }
-
 </style>
